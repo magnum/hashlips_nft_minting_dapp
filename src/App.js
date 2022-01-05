@@ -8,18 +8,19 @@ import styled from "styled-components";
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
+// mint button // 
 export const StyledButton = styled.button`
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 25px;
   border: none;
   background-color: var(--secondary);
-  padding: 10px;
+  padding: 18px;
   font-weight: bold;
   color: var(--secondary-text);
-  width: 100px;
+  width: 150px;
   cursor: pointer;
-  box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
-  -webkit-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
+  box-shadow: 0px 6px 0px -2px rgba(95,10,90,0.5);
+  -webkit-box-shadow: 0px 20px 20px -2px rgba(157,28,138,255);
   -moz-box-shadow: 0px 6px 0px -2px rgba(250, 250, 250, 0.3);
   :active {
     box-shadow: none;
@@ -28,14 +29,15 @@ export const StyledButton = styled.button`
   }
 `;
 
+//+ e - button//
 export const StyledRoundButton = styled.button`
   padding: 10px;
   border-radius: 100%;
   border: none;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   padding: 10px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
   color: var(--primary-text);
   width: 30px;
   height: 30px;
@@ -44,8 +46,8 @@ export const StyledRoundButton = styled.button`
   align-items: center;
   justify-content: center;
   box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
-  -webkit-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
-  -moz-box-shadow: 0px 4px 0px -2px rgba(250, 250, 250, 0.3);
+  -webkit-box-shadow: 0px 10px 10px -2px rgba(157,28,138,255);
+  -moz-box-shadow: px 4px 0px -2px rgba(250, 250, 250, 0.3);
   :active {
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -53,38 +55,40 @@ export const StyledRoundButton = styled.button`
   }
 `;
 
+//pannello centrale//
 export const ResponsiveWrapper = styled.div`
   display: flex;
-  flex: 1;
-  flex-direction: column;
+  flex: 10;
+  flex-direction: row;
   justify-content: stretched;
   align-items: stretched;
-  width: 100%;
+  width: 60%;                      
   @media (min-width: 767px) {
     flex-direction: row;
   }
 `;
 
+//logo sopra il pannello//
 export const StyledLogo = styled.img`
-  width: 200px;
+  width: 20px;
   @media (min-width: 767px) {
-    width: 300px;
+    width: 237px;
   }
   transition: width 0.5s;
   transition: height 0.5s;
 `;
-
+//immagini laterali//
 export const StyledImg = styled.img`
-  box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
-  border: 4px dashed var(--secondary);
+  box-shadow: 2px 5px 110px 2px rgba(188, 54, 209, 0.5);
+  border: 0px dashed var(--secondary);
   background-color: var(--accent);
   border-radius: 100%;
   width: 200px;
   @media (min-width: 900px) {
     width: 250px;
   }
-  @media (min-width: 1000px) {
-    width: 300px;
+  @media (min-width: 0px) {
+    width: 0px;
   }
   transition: width 0.5s;
 `;
@@ -99,7 +103,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+  const [feedback, setFeedback] = useState(`Click MINT NOW to mint your SMC NFT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -119,6 +123,9 @@ function App() {
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
   });
+
+
+  
 
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
@@ -152,6 +159,8 @@ function App() {
       });
   };
 
+  
+
   const decrementMintAmount = () => {
     let newMintAmount = mintAmount - 1;
     if (newMintAmount < 1) {
@@ -160,10 +169,12 @@ function App() {
     setMintAmount(newMintAmount);
   };
 
+
+  //Setta qui il maxmintamount (su entrambi i valori ;))//
   const incrementMintAmount = () => {
     let newMintAmount = mintAmount + 1;
-    if (newMintAmount > 10) {
-      newMintAmount = 10;
+    if (newMintAmount > 3) {
+      newMintAmount = 3;
     }
     setMintAmount(newMintAmount);
   };
@@ -198,12 +209,12 @@ function App() {
       <s.Container
         flex={1}
         ai={"center"}
-        style={{ padding: 24, backgroundColor: "var(--primary)" }}
+        style={{ padding: 5, backgroundColor: "var(--primary)" }}
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
       >
         <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
         <s.SpacerSmall />
-        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
+        <ResponsiveWrapper flex={1} style={{ padding: 5 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg alt={"example"} src={"/config/images/example.gif"} />
           </s.Container>
@@ -216,18 +227,24 @@ function App() {
               backgroundColor: "var(--accent)",
               padding: 24,
               borderRadius: 24,
-              border: "4px dashed var(--secondary)",
-              boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
+              border: "4px  var(--secondary)",  //contorno pannello
+              boxShadow: "0px 0px 0px 0px rgba(95,10,90,0.5)",
             }}
-          >
+            >
+
+              
+              
+
+              
             <s.TextTitle
               style={{
                 textAlign: "center",
-                fontSize: 50,
+                fontSize: 50,             //dimensioni font supply//
                 fontWeight: "bold",
-                color: "var(--accent-text)",
+                color: "var(--primary-text)",
               }}
             >
+              
               {data.totalSupply} / {CONFIG.MAX_SUPPLY}
             </s.TextTitle>
             <s.TextDescription
@@ -236,6 +253,7 @@ function App() {
                 color: "var(--primary-text)",
               }}
             >
+              
               <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
                 {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
               </StyledLink>
@@ -245,7 +263,11 @@ function App() {
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  
                 >
+
+                  
+
                   The sale has ended.
                 </s.TextTitle>
                 <s.TextDescription
@@ -263,14 +285,18 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
+                 Dutch Auction starts at 01/02/2022 1.00 UTC, price decrease to 0.1 Eth in 24 hours, mint your NFT before it's too late!
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
+
                 >
-                  Excluding gas fees.
+                  
+                  One {CONFIG.SYMBOL} current PRICE is {CONFIG.DISPLAY_COST}{" "} 
+                  {CONFIG.NETWORK.SYMBOL} excluding gas fees.
+                  <s.SpacerXSmall />
+                  PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
                 </s.TextDescription>
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
@@ -360,7 +386,7 @@ function App() {
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft ? "BUSY" : "MINT NOW"}
                       </StyledButton>
                     </s.Container>
                   </>
@@ -386,9 +412,7 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
-            Please make sure you are connected to the right network (
-            {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
-            Once you make the purchase, you cannot undo this action.
+           SuccessMetaCity 
           </s.TextDescription>
           <s.SpacerSmall />
           <s.TextDescription
@@ -397,9 +421,7 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
-            We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
-            successfully mint your NFT. We recommend that you don't lower the
-            gas limit.
+            Take care 
           </s.TextDescription>
         </s.Container>
       </s.Container>

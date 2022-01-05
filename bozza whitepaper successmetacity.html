@@ -1,0 +1,672 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>White paper</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+}
+
+.simple-table-header {
+	background: rgb(247, 246, 243);
+	color: black;
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7f4e2546-e484-4c8f-8caf-6ac34ffe2c5a" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📜</span></div><h1 class="page-title">White paper</h1></header><div class="page-body"><ul id="eaf71a71-551c-484f-b5d8-f4e21ba445bb" class="toggle"><li><details open=""><summary>Obiettivo</summary><p id="f2db8cad-6f82-4f13-923d-7b7a8087e574" class="">La nostra mission è creare un ambiente virtuale positivo e produttivo, utile alla quasi totalità delle persone. La nostra città sarà formata da quartieri a tema in modo da rendere facile l&#x27;accesso a tutti i servizi mirati ad ogni categoria. </p><p id="0f008983-51be-4d1b-8658-52fb53e1dd46" class="">Creeremo edifici dedicati alla formazione nei settori più svariati e spazi dove le persone potranno incontrarsi per confrontarsi e chiedere consigli ad altri utenti che condividono obiettivi simili. In success meta city potrete trovare supporto per raggiungere i vostri obiettivi dal business alla vita familiare, dall&#x27;arte alla finanza. </p><p id="8325ae88-9377-4541-b3dc-3e6e5449393c" class="">Il tutto sarà scambiabile con il nostro token che potrà essere acquistato, ma anche guadagnato all&#x27;interno di SuccessMetaCity.</p></details></li></ul><ul id="e084cd39-2888-4302-97e5-3774aae8f32a" class="toggle"><li><details open=""><summary>Settore</summary><p id="50220624-3cc6-4cde-acf6-42c20bfcfc0c" class="">Il mondo degli NFT e del metaverso, ad oggi è quasi esclusivamente incentrato sul mondo del gaming e dell&#x27;arte, quello che realizzeremo anche grazie al vostro supporto, sarà un vero e proprio ecosistema virtuale fatto per riunire persone che puntano all&#x27;eccellenza in svariati settori, supportandole con innumerevoli servizi e strumenti efficaci, mirati a migliorare le proprie performance, il tutto in un ambiente positivo che ha come fondamentali l&#x27;etica e la trasparenza. SuccessMetaCity, sarà il primo progetto a dare un&#x27;infinità di vantaggi applicabili anche nel mondo reale e nella propria passione o professione</p></details></li></ul><ul id="6eead1a1-923d-4e5b-88e3-0c037d4da1a0" class="toggle"><li><details open=""><summary>Roadmap</summary><ul id="f7674861-b938-47a4-9c28-4913799f5228" class="bulleted-list"><li style="list-style-type:disc">12/2021 sito web e social</li></ul><ul id="5220552f-74bd-4847-910c-55df4a81ce60" class="bulleted-list"><li style="list-style-type:disc">01/2022 apertura server discord</li></ul><ul id="d480039d-1d79-4933-9f88-065c5943eba7" class="bulleted-list"><li style="list-style-type:disc">01/2022 Accesso whitelist</li></ul><ul id="c783a8f8-a012-40ff-b13e-6234d4adf0ef" class="bulleted-list"><li style="list-style-type:disc">01/2022 Campagna marketing a pagamento</li></ul><ul id="0640dc8c-2fda-4899-84cf-d0601ebe1674" class="bulleted-list"><li style="list-style-type:disc">02/2022 Mint 1</li></ul><ul id="fe0ea54e-0a8b-4ae3-815e-f550993f1177" class="bulleted-list"><li style="list-style-type:disc">03/2022 Dao wallet</li></ul><ul id="bf82c7dd-f665-4785-a7c5-4ee0d15f743d" class="bulleted-list"><li style="list-style-type:disc">03/2022 Token</li></ul><ul id="3f50d634-b3a7-458f-9cbd-386ffea42b23" class="bulleted-list"><li style="list-style-type:disc">04/2022 Mint 2</li></ul><ul id="9f5a0415-6556-4363-95f6-16061ef397ea" class="bulleted-list"><li style="list-style-type:disc">05/2022 SuccessMetaCity Beta</li></ul><ul id="bd7d675b-e757-445a-9ed3-169d51dd7fa0" class="bulleted-list"><li style="list-style-type:disc">06/2022 stake farm pool</li></ul><ul id="b056a51b-e25c-4ef3-9f89-a91d4b586829" class="bulleted-list"><li style="list-style-type:disc">07/2022 quartiere 3</li></ul><ul id="1bec88b5-ca8b-411f-94fc-02d5e58d91c6" class="bulleted-list"><li style="list-style-type:disc">09/2022 quartiere 4</li></ul><ul id="6001fd25-78a6-4b29-8e67-9ad11619411d" class="bulleted-list"><li style="list-style-type:disc">11/2022 quartiere 5</li></ul><ul id="72cb6d95-9c64-4fa2-8d88-183b3aa51664" class="bulleted-list"><li style="list-style-type:disc">12/2022 SuccessMetaCity VR 1.0</li></ul><ul id="ab2915a6-75c3-4396-b42c-5cd3b3cf1a36" class="bulleted-list"><li style="list-style-type:disc">2023 Espansione</li></ul></details></li></ul><ul id="9e2245f2-cfc0-4f00-818b-8e63574bb479" class="toggle"><li><details open=""><summary>Profilo Community</summary><p id="c8b8fac1-7f55-4e2e-9d79-6b13058d4e8d" class="">Il nostro progetto punta a coinvolgere persone seriamente interessate a far parte della nostra community ed a utilizzare gli innumerevoli servizi che integreremo regolarmente all&#x27;interno di SuccessMetaCity. Vogliamo che sempre più persone acquistino il nostro NFT, per detenerlo nel lungo periodo in modo da poter accedere ad incredibili vantaggi all&#x27;interno della city.</p><p id="2603f0f5-3a19-4814-85c3-d9649e165231" class=""><mark class="highlight-red">Possedere il nostro Nft equivarrà ad essere soci a tutti gli effetti del progetto; grazie ad esso infatti potrete prendere parte alle assemblee, essere informati in anticipo sulle future decisioni, votare su tutte le scelte importanti e i gli innumerevoli vantaggi che annunceremo lungo il percorso. </mark></p><p id="b23d51bb-c35b-4b2a-a474-c023ab695e8f" class=""><mark class="highlight-red">TUTTO il ricavato del mint verrà reinvestito all&#x27;interno del progetto</mark></p></details></li></ul><ul id="363c71f0-e72c-4c25-bdde-668e8d519548" class="toggle"><li><details open=""><summary>Nft</summary><p id="755b1863-4830-4528-a22b-738b0f8950f9" class="">Il Nostro NFT rappresenterà una quota all&#x27;interno del progetto, il possesso darà accesso ad innumerevoli vantaggi: genererà token attraverso missioni e giochi, sconti importanti all&#x27;interno della città e accesso a gruppi riservati dove verranno prese decisioni riguardanti il futuro del progetto e forniti in anteprima molti aggiornamenti.</p></details></li></ul><ul id="a6bc0e35-6eee-4910-a370-1362105b7a5f" class="toggle"><li><details open=""><summary>Mint</summary><p id="c54ac381-66c4-4db0-94e8-8a7893112453" class="">Lanceremo la collezione attraverso il nostro sito, la fase di premint avrà una durata temporale stabilita e darà la possibilità ad un numero ristretto di utenti, di acquistare un numero prestabilito di nft, ad un prezzo vantaggioso e senza dover competere con altri utenti. 
+Trascorso il tempo prestabilito verrà aperto il mint, che si concluderà al raggiungimento del 50% delle vendite.
+
+Con il ricavo di questa prima fase, potremo finanziare le fasi successive del progetto, esponendoci a meno rischi da eventuali attacchi al wallet e rassicurando gli investitori sulla concretezza del progetto, dando loro la possibilità di valutare il nostro lavoro, prima di decidere di entrare nel progetto o investire ulteriormente.Il mint riaprirà una volta lanciato il token e il wallet DAO per il successivo 50% dei pezzi.
+
+Naturalmente chi effettuerà l&#x27;acquisto nella prima fase, verrà ricompensato per il supporto e la fiducia con diversi vantaggi che sveleremo agli utenti poco prima del mint</p><p id="ee191680-68c2-47ed-9597-07d5aedec4c2" class="">
+</p></details></li></ul><ul id="d7c488c8-de92-404c-880c-fe07e53c2524" class="toggle"><li><details open=""><summary>Gestione fondi</summary><p id="06833b77-8254-47bf-899e-3e13eb5b0e12" class=""><mark class="highlight-red">Tuttto il ricavato dal mint, verrà reinvestito all&#x27;interno del progetto: </mark></p><ul id="77f99e32-561b-41c8-b2c3-a051c259abe1" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">40% destinato al Wallet dao, grazie a questi fondi potremo acquistare lotti di terra nel metaverso dove edificare la nostra città e acquistare nft bluechips, puntando principalmente a quei progetti che hanno come scopo lo sviluppo del metaverso, dando così la possibilità ai nostri sostenitori di prendere parte anche a progetti interessanti paralleli</mark></li></ul><ul id="4c3a607a-9101-4db8-a0d5-4fccd5eb1b41" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">40% destinato allo sviluppo di SMC, quindi anche a SMC Beta e al token </mark></li></ul><ul id="b78cd5fa-bfae-4ec7-99d3-8238a3d60a67" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">10% Marketing</mark></li></ul><ul id="96415dde-f31b-4fc1-a6ef-eee7d0869533" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">10% Imprevisti</mark></li></ul><p id="17aacbe3-9592-4ef3-a3f6-788315d65cef" class=""><mark class="highlight-red">Per garantire la massima trasparenza, sul nostro sito, verrà creata una sezione dedicata ai Membri &quot;Soci&quot; dove sarà possibile consultare tutti i movimenti effettuati dagli wallet del progetto. </mark></p><p id="a875f18a-83e5-4fdd-b101-93ed9504c757" class="block-color-red">Anche noi creatori dobbiamo ricevere un compenso, ma non vogliamo togliere fondi provenienti dai nostri primi sostenitori, quindi abbiamo deciso che da questa collezione gli unici fondi a noi destinati saranno quelli delle royalteas sulle vendite future, distribuite agli artisti e ai fondatori.</p><p id="0d1b509a-df83-4dd5-8b0c-b0cdeda54122" class="block-color-red">Vorremmo mantenere questa strategia anche per tutti i lanci futuri, ma non possiamo ancora garantirlo. In ogni caso, tutta la community sarà aggiornata anticipatamente. </p></details></li></ul><ul id="68e45579-b608-410e-aaed-ee8859772ec2" class="toggle"><li><details open=""><summary>Token</summary><p id="3d6f019e-c7d6-442b-929b-9cc563ca88ba" class="">Successivamente al lancio dell&#x27;NFT, creeremo il nostro token, il nome verrà scelto dagli utenti vip attraverso sondaggi sui nostri server discord. Subito dopo il lancio del token, l&#x27;NFT inizierà ad accumulare token, riscattabile attraverso il nostro sito, la funzione verrà aggiunta entro il lancio della beta 2d di SuccesMetaCity, ogni vendita effettuata in questo periodo, azzererà il saldo del token. </p><p id="822a521f-184b-42f1-b0d1-fb5ed9ab30d2" class="">Al lancio della beta, L&#x27;NFT smetterà di generare token e per continuare, sarà necessario metterlo in stake attraverso divertenti procedure, e in futuro utilizzarlo per partecipare ai success game (sss). Su successmetacity beta, verrà introdotta la possibilità di mettere in stake il token per partecipare a liquidity pools e mining.
+
+Tutte le transazioni all&#x27;interno di successmetacity potranno essere fatte ache con il token, sarà quindi la principale moneta utilizzata all&#x27;interno del progetto.</p></details></li></ul><ul id="e8aa0fc4-835e-494e-a00f-d108cdd61b5c" class="toggle"><li><details open=""><summary> Wallet DAO</summary><p id="092378cd-4d23-43c7-84cd-40b6cd986ce3" class="">Parte dei ricavi verrà destinata al wallet DAO, con il quale acquisteremo appezzamenti di terra sui principali metaversi e nft bluechips di altri progetti nel metaverso. Una parte dei guadagni di questo wallet verrà distribuita sottoforma di token a tutti i possessori della collezione</p></details></li></ul><ul id="da4e571f-4705-4975-8006-cbfec4dde7a9" class="toggle"><li><details open=""><summary>Metaverso</summary><p id="aadf8099-c24e-45dc-872d-1fc8ca368dfb" class="">Entro la metà del 2022, vogliamo lanciare la beta di Successmetacity, un app web accessibile da qualsiasi dispositivo tramite browser che permetterà ai soli possessori del nostro NFT, di sperimentare i servizi offerti da noi e dai nostri partner. In questo periodo, sarà anche possibile, prenotare il proprio edificio all&#x27;interno della città per svolgere la propria attività, offrendo servizi e supporto agli utenti della community. 
+Verranno creati quartieri a tema dove trovare tutti gli strumenti e i servizi utili a quella categoria. </p><p id="8fc4f5ad-9f51-4035-a898-3bbc26cb6338" class="">I nuovi settori verranno aperti periodicamente con cadenza regolare, ci sarà un calendario in continuo aggiornamento dove trovare tutte le date importanti, tra cui l&#x27;inaugurazione di nuovi quartieri, attività e il lancio di nuovi servizi, in modo da consentire per tempo alle persone interessate a quel settore, di entrare nel progetto.</p><p id="31103e0a-15d2-4bf2-8b6e-3d6965bef106" class="">I quartieri di SuccessMetaCity, saranno in costante sviluppo.
+</p></details></li></ul><ul id="8f616acb-dac2-460c-b2eb-b34132fa4088" class="toggle"><li><details open=""><summary>Servizi</summary><p id="43753ece-e339-42f3-81b3-1647593000d5" class="">Oggi tutto si evolve alla velocità della luce, l&#x27;informazione è accessibile e istantanea, l&#x27;unico modo per poter emergere in qualsiasi settore è sviluppare innumerevoli abilità e crescere personalmente;</p><p id="399df073-9467-405d-a630-4439ea413af1" class="">
+Quindi il primo quartiere che costruiremo sarà &quot;CRESCITA PERSONALE&quot; (nome da rivedere)</p><p id="cd0a75f7-328d-4dd5-a9b2-d7457c9e7647" class="">
+</p><ul id="ab765305-8f74-4534-99be-1178fe13bbac" class="toggle"><li><details open=""><summary>Crescita personale</summary><p id="73829c80-a6c5-4d04-b6c9-ed6d8d3c23b0" class="">All&#x27;interno di CrescitaPersonale, saranno presenti ambienti dove formarsi, come aule per imparare la teoria, e ambienti dedicati dove fare pratica. </p><p id="3fa1575b-01f5-4010-be17-0b35c552602e" class="">Grazie alla realtà virtuale sarà possibile riprodurre ambienti immersivi dove allenarsi, studiare, pensare, ecc... accelerando così, notevolmente, i processi di apprendimento. </p><p id="def5d7a6-9bb2-4718-a3ed-032e17e355b3" class="">Stringeremo collaborazioni con professionisti della formazione di alto livello, e all&#x27;interno dell&#x27;ambiente sarà possibile usufruire del servizio di traduzione simultanea in modo da abbattere le barriere linguistiche, permettendo a tutti di formarsi con i massimi esponenti a livello mondiale.. </p></details></li></ul><ul id="d0b0e1c7-c293-441d-b9a5-3006de2669ea" class="toggle"><li><details open=""><summary>Altri Quartieri</summary><p id="7f4b0f17-26a9-4e12-8cb7-ea2691668cef" class="">Con L&#x27; apertura del settore &quot;crescita personale&quot;, verrà aperto un altro quartiere con servizi personalizzati e mirati a quel settore. </p><p id="8165a9af-513f-4eb6-9f24-6ffce84000f5" class="">i  nuovi quartieri, verranno lanciati con cadenza bimestrale. Puntiamo a sbarcare nel metaverso entro fine 2022 con almeno 5 quartieri vivibili in realtà virtuale e rendere entro fine 2023 successmetacity una vera e propria città, con migliaia di utenti e decine di servizi, dando la possibilità ai membri vip, di proporre nuovi settori e partecipare allo sviluppo di essi.</p></details></li></ul><p id="16651aa5-db99-4038-9481-2a724d418f96" class="">
+</p><p id="306214b3-dcc4-4171-a781-0e7d8db44483" class="">
+</p></details></li></ul><p id="afd56d99-d5e1-4a16-8b89-f8f23ace40ff" class="">
+</p><p id="796469e1-957a-4ced-9929-98f028c4432f" class="">
+</p></div></article></body></html>
