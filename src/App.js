@@ -123,12 +123,11 @@ function App() {
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
   });
-
-
-  
+  const [currentCost, setCurrentCost] = useState(1);
 
   const claimNFTs = () => {
-    let cost = CONFIG.WEI_COST;
+    //let cost = CONFIG.WEI_COST;
+    let cost = currentCost;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
@@ -136,6 +135,7 @@ function App() {
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
+    //return; // dryrun
     blockchain.smartContract.methods
       .mint(mintAmount)
       .send({
@@ -196,6 +196,13 @@ function App() {
     SET_CONFIG(config);
   };
 
+  const getCurrentCost = async () => {
+    console.log("getCurrentCost")
+    let cost = Math.random()*10;
+    setCurrentCost(cost);
+    return cost;
+  };
+
   useEffect(() => {
     getConfig();
   }, []);
@@ -203,6 +210,10 @@ function App() {
   useEffect(() => {
     getData();
   }, [blockchain.account]);
+
+  useEffect(() => {
+    getCurrentCost(); 
+  }, [mintAmount])
 
   return (
     <s.Screen>
@@ -231,10 +242,6 @@ function App() {
               boxShadow: "0px 0px 0px 0px rgba(95,10,90,0.5)",
             }}
             >
-
-              
-              
-
               
             <s.TextTitle
               style={{
@@ -293,7 +300,7 @@ function App() {
 
                 >
                   
-                  One {CONFIG.SYMBOL} current PRICE is {CONFIG.DISPLAY_COST}{" "} 
+                  One {CONFIG.SYMBOL} current PRICE is {currentCost}{" "} 
                   {CONFIG.NETWORK.SYMBOL} excluding gas fees.
                   <s.SpacerXSmall />
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
