@@ -135,7 +135,7 @@ function App() {
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
-    //return; // dryrun
+    return; // dryrun
     blockchain.smartContract.methods
       .mint(mintAmount)
       .send({
@@ -197,10 +197,17 @@ function App() {
   };
 
   const getCurrentCost = async () => {
-    console.log("getCurrentCost")
-    let cost = Math.random()*10;
-    setCurrentCost(cost);
-    return cost;
+    try {
+      // https://bitsofco.de/calling-smart-contract-functions-using-web3-js-call-vs-send/
+      var price = await blockchain.smartContract.methods.getCurrentPrice().call();
+      setCurrentCost(price);
+      setFeedback(`Current price is ${price}`);
+      console.log(`getCurrentCost: ${price}`)
+      return price;
+    } catch(err) {
+      console.error(err);
+      setFeedback("Sorry, something went wrong getting current price");
+    }
   };
 
   useEffect(() => {
