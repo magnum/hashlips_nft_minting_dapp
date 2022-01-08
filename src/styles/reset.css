@@ -125,7 +125,7 @@ table {
 
 @font-face {
   font-family: "coder";
-  src: local("coder"), url(Handel-Gothic-BT.ttf.woff) format("woff");
+  src: local("coder"), url(NexaBold.ttf.woff) format("woff");
 }
 
 body {
