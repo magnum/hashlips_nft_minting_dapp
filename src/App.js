@@ -298,7 +298,7 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                 Dutch Auction starts at 01/02/2022 1.00 UTC, price decrease to 0.1 Eth in 24 hours, mint your NFT before it's too late!
+                 Dutch Auction starts at 01/02/2022 1.00 UTC, price start at 1 ETH and decrease to 0.1 ETH in 24 hours, mint your NFT before it's too late!
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 
@@ -307,7 +307,7 @@ function App() {
                 >
                 {blockchain.smartContract === null ? (""): (
                   <div>
-                  One {CONFIG.SYMBOL} current PRICE is {currentPrice}{" "} 
+                  One {CONFIG.SYMBOL} current PRICE is 0.{currentPrice}{" "} 
                   {CONFIG.NETWORK.SYMBOL} excluding gas fees.
                   <s.SpacerXSmall />
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
