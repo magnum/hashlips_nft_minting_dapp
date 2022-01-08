@@ -204,7 +204,7 @@ function App() {
       return price;
     } catch(err) {
       console.error(err);
-      setFeedback("Sorry, something went wrong getting current price");
+      setFeedback("Sorry, something went wrong getting current Price");
     }
   };
 
@@ -244,7 +244,7 @@ function App() {
               backgroundColor: "var(--accent)",
               padding: 24,
               borderRadius: 24,
-              border: "4px  var(--secondary)",  //contorno pannello
+              border: "50px  var(--primary)",  //contorno pannello
               boxShadow: "0px 0px 0px 0px rgba(95,10,90,0.5)",
             }}
             >
@@ -307,9 +307,10 @@ function App() {
                 >
                 {blockchain.smartContract === null ? (""): (
                   <div>
-                One {CONFIG.SYMBOL} current PRICE is 0.{currentPrice}{" "} 
-                  {CONFIG.NETWORK.SYMBOL} excluding gas fees.
-                  <s.SpacerXSmall />
+                One {CONFIG.SYMBOL} current PRICE is: 
+                <s.SpacerXSmall />
+                 0.{currentPrice}{" "} {CONFIG.NETWORK.SYMBOL} excluding gas fees.
+                  <s.SpacerSmall />
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
                   </div>
                 )}
