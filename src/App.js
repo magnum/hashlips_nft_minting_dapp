@@ -123,19 +123,17 @@ function App() {
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
   });
-  const [currentCost, setCurrentCost] = useState(1);
+  const [currentPrice, setCurrentPrice] = useState(CONFIG.WEI_COST);
 
   const claimNFTs = () => {
-    //let cost = CONFIG.WEI_COST;
-    let cost = currentCost;
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
+    let totalCostWei = String(currentPrice * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
-    return; // dryrun
+    //return; // dryrun
     blockchain.smartContract.methods
       .mint(mintAmount)
       .send({
@@ -196,13 +194,13 @@ function App() {
     SET_CONFIG(config);
   };
 
-  const getCurrentCost = async () => {
+  const getCurrentPrice = async () => {
+    if(!blockchain.smartContract) return currentPrice;
     try {
       // https://bitsofco.de/calling-smart-contract-functions-using-web3-js-call-vs-send/
       var price = await blockchain.smartContract.methods.getCurrentPrice().call();
-      setCurrentCost(price);
-      setFeedback(`Current price is ${price}`);
-      console.log(`getCurrentCost: ${price}`)
+      console.log(`getCurrentPrice: ${price}`)
+      setCurrentPrice(price);
       return price;
     } catch(err) {
       console.error(err);
@@ -216,10 +214,11 @@ function App() {
 
   useEffect(() => {
     getData();
+    getCurrentPrice();
   }, [blockchain.account]);
 
   useEffect(() => {
-    getCurrentCost(); 
+    getCurrentPrice(); 
   }, [mintAmount])
 
   return (
@@ -302,16 +301,20 @@ function App() {
                  Dutch Auction starts at 01/02/2022 1.00 UTC, price decrease to 0.1 Eth in 24 hours, mint your NFT before it's too late!
                 </s.TextTitle>
                 <s.SpacerXSmall />
-                <s.TextDescription
+                
+                <s.Container
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
-
                 >
-                  
-                  One {CONFIG.SYMBOL} current PRICE is {currentCost}{" "} 
+                {blockchain.smartContract === null ? (""): (
+                  <div>
+                  One {CONFIG.SYMBOL} current PRICE is {currentPrice}{" "} 
                   {CONFIG.NETWORK.SYMBOL} excluding gas fees.
                   <s.SpacerXSmall />
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
-                </s.TextDescription>
+                  </div>
+                )}
+                </s.Container>
+
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
