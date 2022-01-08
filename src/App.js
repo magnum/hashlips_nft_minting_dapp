@@ -307,7 +307,7 @@ function App() {
                 >
                 {blockchain.smartContract === null ? (""): (
                   <div>
-                  One {CONFIG.SYMBOL} current PRICE is 0.{currentPrice}{" "} 
+                One {CONFIG.SYMBOL} current PRICE is 0.{currentPrice}{" "} 
                   {CONFIG.NETWORK.SYMBOL} excluding gas fees.
                   <s.SpacerXSmall />
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
