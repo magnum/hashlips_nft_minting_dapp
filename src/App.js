@@ -309,7 +309,7 @@ function App() {
                   <div>
                 One {CONFIG.SYMBOL} current PRICE is: 
                 <s.SpacerXSmall />
-                 0.{currentPrice}{" "} {CONFIG.NETWORK.SYMBOL} excluding gas fees.
+                 0.0{currentPrice}{" "} {CONFIG.NETWORK.SYMBOL} excluding gas fees.
                   <s.SpacerSmall />
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
                   </div>
