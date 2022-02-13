@@ -1,16 +1,16 @@
 {
-  "CONTRACT_ADDRESS": "0xE2FC0Db7FA066E4D9AF551BECcf5486f38EB1447",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0xE2FC0Db7FA066E4D9AF551BECcf5486f38EB1447",
+  "CONTRACT_ADDRESS": "0x4ff3b26424df90eB20F32faE180d34464880FA92",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x4ff3b26424df90eB20F32faE180d34464880FA92",
   "NETWORK": {
     "NAME": "Ethereum",
     "SYMBOL": "ETH",
     "ID": 4
   },
-  "NFT_NAME": "MINA3",
-  "SYMBOL": "SMCMN3",
-  "MAX_SUPPLY": 2200,
-  "WEI_COST": 100000000000000000,
-  "DISPLAY_COST": 0.1,
+  "NFT_NAME": "SMCTEST1",
+  "SYMBOL": "SMCT1",
+  "MAX_SUPPLY": 100,
+  "WEI_COST": 10000000000000000,
+  "DISPLAY_COST": 0.01,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
   "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/mina3",
