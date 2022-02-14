@@ -1,13 +1,13 @@
 {
-  "CONTRACT_ADDRESS": "0x4ff3b26424df90eB20F32faE180d34464880FA92",
-  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x4ff3b26424df90eB20F32faE180d34464880FA92",
+  "CONTRACT_ADDRESS": "0x9f89696e6C2581A88DbD5Cbb83a9eba4BC16Be9f",
+  "SCAN_LINK": "https://rinkeby.etherscan.io/address/0x9f89696e6C2581A88DbD5Cbb83a9eba4BC16Be9f",
   "NETWORK": {
     "NAME": "Ethereum",
     "SYMBOL": "ETH",
     "ID": 4
   },
-  "NFT_NAME": "SMCTEST1",
-  "SYMBOL": "SMCT1",
+  "NFT_NAME": "GIGI",
+  "SYMBOL": "GG",
   "MAX_SUPPLY": 100,
   "WEI_COST": 10000000000000000,
   "DISPLAY_COST": 0.01,
