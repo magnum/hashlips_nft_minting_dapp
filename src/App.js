@@ -298,7 +298,7 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                 Dutch Auction starts at 01/02/2022 1.00 UTC, price starts at 1 ETH and decrease to 0.1 ETH in 12 hours, mint your NFT before it's too late!
+                 Dutch Auction starts at 14/02/2022 22.00 UTC, price starts at 0.1 ETH and decrease to 0.01 ETH in 20 minutes, mint your NFT before it's too late!
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 
