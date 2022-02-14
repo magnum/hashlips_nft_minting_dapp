@@ -16,7 +16,7 @@ export const StyledButton = styled.button`
   background-color: var(--secondary);
   padding: 18px;
   font-weight: bold;
-  color: var(--secondary-text);
+  color: var(--primary-text);
   width: 150px;
   cursor: pointer;
   box-shadow: 0px 6px 0px -2px rgba(95,10,90,0.5);
@@ -94,7 +94,7 @@ export const StyledImg = styled.img`
 `;
 
 export const StyledLink = styled.a`
-  color: var(--secondary);
+  color: var(--secondary-text);
   text-decoration: none;
 `;
 
@@ -252,7 +252,7 @@ function App() {
             <s.TextTitle
               style={{
                 textAlign: "center",
-                fontSize: 50,             //dimensioni font supply//
+                fontSize: 55,             //dimensioni font supply//
                 fontWeight: "bold",
                 color: "var(--primary-text)",
               }}
