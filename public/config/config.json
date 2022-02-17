@@ -12,7 +12,7 @@
   "WEI_COST": 10000000000000000,
   "DISPLAY_COST": 0.01,
   "GAS_LIMIT": 285000,
-  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE": "OPENSEA",
   "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/mina3",
   "SHOW_BACKGROUND": true
 }

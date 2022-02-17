@@ -125,7 +125,7 @@ table {
 
 @font-face {
   font-family: "coder";
-  src: local("coder"), url(Pixeled.ttf) format("woff");
+  src: local("coder"), url(Pixeltype.ttf) format("woff");
 }
 
 body {

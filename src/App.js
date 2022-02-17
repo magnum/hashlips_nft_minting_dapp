@@ -252,7 +252,7 @@ function App() {
             <s.TextTitle
               style={{
                 textAlign: "center",
-                fontSize: 55,             //dimensioni font supply//
+                fontSize: 75,             //dimensioni font supply//
                 fontWeight: "bold",
                 color: "var(--primary-text)",
               }}
@@ -271,7 +271,7 @@ function App() {
                 {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
               </StyledLink>
             </s.TextDescription>
-            <s.SpacerSmall />
+            <s.SpacerXSmall />
             {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
               <>
                 <s.TextTitle
@@ -281,14 +281,14 @@ function App() {
 
                   
 
-                  The sale has ended.
+                  The MetaBots Collection is Sold Out!
                 </s.TextTitle>
                 <s.TextDescription
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
                   You can still find {CONFIG.NFT_NAME} on
                 </s.TextDescription>
-                <s.SpacerSmall />
+                <s.SpacerXSmall />
                 <StyledLink target={"_blank"} href={CONFIG.MARKETPLACE_LINK}>
                   {CONFIG.MARKETPLACE}
                 </StyledLink>
@@ -310,13 +310,13 @@ function App() {
                 One {CONFIG.SYMBOL} current PRICE is: 
                 <s.SpacerXSmall />
                  0.0{currentPrice}{" "} {CONFIG.NETWORK.SYMBOL} excluding gas fees.
-                  <s.SpacerSmall />
+                  <s.SpacerXSmall />
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
                   </div>
                 )}
                 </s.Container>
 
-                <s.SpacerSmall />
+                <s.SpacerXSmall />
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
@@ -328,7 +328,7 @@ function App() {
                     >
                       Connect to the {CONFIG.NETWORK.NAME} network
                     </s.TextDescription>
-                    <s.SpacerSmall />
+                    <s.SpacerXSmall />
                     <StyledButton
                       onClick={(e) => {
                         e.preventDefault();
@@ -340,7 +340,7 @@ function App() {
                     </StyledButton>
                     {blockchain.errorMsg !== "" ? (
                       <>
-                        <s.SpacerSmall />
+                        <s.SpacerXSmall />
                         <s.TextDescription
                           style={{
                             textAlign: "center",
@@ -362,7 +362,7 @@ function App() {
                     >
                       {feedback}
                     </s.TextDescription>
-                    <s.SpacerMedium />
+                    <s.SpacerSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledRoundButton
                         style={{ lineHeight: 0.4 }}
@@ -374,7 +374,7 @@ function App() {
                       >
                         -
                       </StyledRoundButton>
-                      <s.SpacerMedium />
+                      <s.SpacerSmall />
                       <s.TextDescription
                         style={{
                           textAlign: "center",
@@ -383,7 +383,7 @@ function App() {
                       >
                         {mintAmount}
                       </s.TextDescription>
-                      <s.SpacerMedium />
+                      <s.SpacerSmall />
                       <StyledRoundButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
@@ -394,7 +394,7 @@ function App() {
                         +
                       </StyledRoundButton>
                     </s.Container>
-                    <s.SpacerSmall />
+                    <s.SpacerXSmall />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
@@ -411,7 +411,7 @@ function App() {
                 )}
               </>
             )}
-            <s.SpacerMedium />
+            <s.SpacerSmall />
           </s.Container>
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
@@ -422,7 +422,7 @@ function App() {
             />
           </s.Container>
         </ResponsiveWrapper>
-        <s.SpacerMedium />
+        <s.SpacerSmall />
         <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
           <s.TextDescription
             style={{
@@ -432,7 +432,7 @@ function App() {
           >
            SuccessMetaCity 
           </s.TextDescription>
-          <s.SpacerSmall />
+          <s.SpacerXSmall />
           <s.TextDescription
             style={{
               textAlign: "center",
