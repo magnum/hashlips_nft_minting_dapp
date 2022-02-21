@@ -103,7 +103,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click MINT NOW to mint your SMC NFT.`);
+  const [feedback, setFeedback] = useState(`Click MINT NOW to mint your METABOT.`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -230,12 +230,12 @@ function App() {
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
       >
         <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
-        <s.SpacerSmall />
+        <s.SpacerMedium />
         <ResponsiveWrapper flex={1} style={{ padding: 5 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg alt={"example"} src={"/config/images/example.gif"} />
           </s.Container>
-          <s.SpacerLarge />
+          <s.SpacerXSmall />
           <s.Container
             flex={2}
             jc={"center"}
@@ -252,7 +252,7 @@ function App() {
             <s.TextTitle
               style={{
                 textAlign: "center",
-                fontSize: 75,             //dimensioni font supply//
+                fontSize: 55,             //dimensioni font supply//
                 fontWeight: "bold",
                 color: "var(--primary-text)",
               }}
@@ -300,23 +300,21 @@ function App() {
                 >
                  Dutch Auction starts at 14/02/2022 22.00 UTC, price starts at 0.1 ETH and decrease to 0.01 ETH in 20 minutes, mint your NFT before it's too late!
                 </s.TextTitle>
-                <s.SpacerXSmall />
-                
                 <s.Container
-                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                  style={{ textAlign: "center", fontSize: 25,color: "var(--accent-text)" }}
                 >
                 {blockchain.smartContract === null ? (""): (
-                  <div>
+                <div>
                 One {CONFIG.SYMBOL} current PRICE is: 
-                <s.SpacerXSmall />
+                
                  0.0{currentPrice}{" "} {CONFIG.NETWORK.SYMBOL} excluding gas fees.
-                  <s.SpacerXSmall />
+                  
                   PLEASE REFRESH THE PAGE TO SEE THE CURRENT PRICE UPDATED
                   </div>
                 )}
                 </s.Container>
 
-                <s.SpacerXSmall />
+                
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
