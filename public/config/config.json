@@ -6,13 +6,13 @@
     "SYMBOL": "ETH",
     "ID": 4
   },
-  "NFT_NAME": "GIGI",
-  "SYMBOL": "GG",
-  "MAX_SUPPLY": 150,
-  "WEI_COST": 10000000000000000,
-  "DISPLAY_COST": 0.01,
+  "NFT_NAME": "FreeMintFixed",
+  "SYMBOL": "FMSMC",
+  "MAX_SUPPLY": 20,
+  "WEI_COST": 90000000000000000,
+  "DISPLAY_COST": 0.09,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "OPENSEA",
-  "MARKETPLACE_LINK": "https://testnets.opensea.io/collection/mina3",
+  "MARKETPLACE_LINK": "",
   "SHOW_BACKGROUND": true
 }
